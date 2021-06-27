@@ -17,11 +17,11 @@ class Homeuser(AbstractUser):
     objects = UserManager()
     
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=Homeuser)
 def send_verification_mail(sender,instance,created, **kwargs):
     if created:
         emailID = instance.email
         verifyToken = instance.emailtoken
-        thread_obj = Send_mail_thread(emailID,verifyToken)
+        thread_obj = Send_mail(emailID,verifyToken)
         thread_obj.start()
 

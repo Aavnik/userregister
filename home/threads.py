@@ -2,11 +2,12 @@ import threading
 from django.conf import settings
 from django.core.mail import send_mail
 
-class Send_mail_thread(threading.Thread):
+class Send_mail(threading.Thread):
 
     def __init__(self, email, token):
         self.email = email
         self.token = token
+      
         threading.Thread.__init__(self)
 
     def run(self):

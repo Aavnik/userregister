@@ -39,7 +39,7 @@ def registeruser(request):
            
 def verify_user(request , token):
     try:
-        user_obj = User.objects.get(email_token = token)
+        user_obj = User.objects.get(emailtoken = token)
         user_obj.is_verified = True
         user_obj.save()
         return HttpResponse('Your account is verified')
